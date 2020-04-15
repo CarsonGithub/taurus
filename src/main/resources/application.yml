@@ -1,0 +1,95 @@
+spring:
+  # 环境 dev|test|prod
+  profiles:
+    active: @profileActive@
+  application:
+    name: taurus
+  # 连接池
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      connection-test-query: SELECT 1
+  # jpa
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+#    properties:
+#      hibernate:
+#        enable_lazy_load_no_trans: true
+  # cache
+#  cache:
+#    redis:
+#      time-to-live: 10000
+    # json时间格式
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  # servlet
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 20MB
+  # redis
+  data:
+    redis:
+      repositories:
+        enabled: false
+  # thymeleaf
+#  thymeleaf:
+#    mode: HTML
+# 服务器配置
+server:
+  tomcat:
+    max-http-form-post-size: 20971520
+  max-http-header-size: 1024000
+  servlet:
+    context-path: /api
+# 日志配置
+logging:
+  level:
+    root: info
+    com.taurus.www: debug
+  file:
+    name: logs/taurus.log
+    path: logs/taurus
+# actuator
+#management:
+#  endpoint:
+#    env:
+#      enabled: true
+#    health:
+#      show-details: always
+#  endpoints:
+#    web:
+#      base-path: /
+#      exposure:
+#        include: env,health
+# jwt
+jwt:
+  iss: backend
+  expire-time: 10800000
+  enable: true
+# swagger开关
+swagger:
+  enable: false
+# schedule
+schedule:
+  redis:
+    refresh: 0 0 3 * * ? #0/30 * * * * ? ###
+# 业务缓存机制
+cache:
+  business:
+    enable: true
+# 短信机制
+sms:
+  juhe:
+    url: http://v.juhe.cn/sms/send
+    tplId: 194491
+    limit: 60000
+    appKey: 0c54cfd9c996fda4cc7a15069fc37eb8
+# demo
+demoSys:
+  url: https://demo.taurus.com.cn/nc/customer/nc_customer_info/ncCustomerInfo.do
+ipInfo: # http://ip.taobao.com/service/getIpInfo.php?ip={ip}
+  url: http://opendata.baidu.com/api.php?query={ip}&co=&resource_id=6006&t=1433920989928&ie=utf8&oe=utf-8&format=json

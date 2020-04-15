@@ -1,0 +1,26 @@
+spring:
+  # DB源
+  datasource:
+    url: jdbc:mysql://localhost:3306/taurus_www?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=CTT&zeroDateTimeBehavior=convertToNull&useSSL=false
+    username: root
+    password: Yinghui.gw1mM2&3
+  # jpa
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: 'none'
+  ## redis配置
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+# 端口
+server:
+  port: 9091
+# 文件生成路径
+taurus:
+  file-root-path: /home/taurus/static
+## 业务缓存机制
+#cache:
+#  business:
+#    enable: false
