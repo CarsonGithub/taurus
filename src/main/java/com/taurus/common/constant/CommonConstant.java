@@ -57,18 +57,15 @@ public class CommonConstant {
 	/**
 	 *  上传路径
 	 */
-	public static final String HTML_SUFFIX =  ".html";
 	public static final String UPLOAD_FILE_PATH = "/upload-files";
 	public static final Set<String> SCRIPT_SUFFIX_SET = new HashSet<>(Arrays.asList("js", "css"));
 	public static final Set<String> IMAGE_SUFFIX_SET = new HashSet<>(Arrays.asList("bmp", "jpg", "png", "jpeg", "gif"));
 	public static final Set<String> VIDEO_SUFFIX_SET = new HashSet<>(Arrays.asList("mp4", "flv","avi","3gp","rm","rmvb","wmv","mov"));
-	public static final Set<String> DOC_SUFFIX_SET = new HashSet<>(Arrays.asList("doc", "docx", "pdf","txt"));
+	public static final Set<String> DOC_SUFFIX_SET = new HashSet<>(Arrays.asList("doc", "docx", "pdf","txt","html"));
 
-	public final static  Long MAX_IMAGE_SIZE = 5242880l;
-	public final static  Long MAX_VIDEO_SIZE = 52428800l; //50M
-	public final static  Long MAX_DOC_SIZE = 5242880l;
-
-	public final static String HOME_PAGE_BANNER_PATH = "/image/banner/homepage/" ;
+	public final static  Long MAX_IMAGE_SIZE = 5242880L;
+	public final static  Long MAX_VIDEO_SIZE = 52428800L; //50M
+	public final static  Long MAX_DOC_SIZE = 5242880L;
 
 	/**
 	 *  异常类型

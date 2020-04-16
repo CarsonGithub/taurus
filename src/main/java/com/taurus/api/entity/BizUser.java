@@ -22,10 +22,9 @@ import javax.persistence.UniqueConstraint;
 @Accessors(chain = true)
 @Data
 @Table(
-        name="tb_user",
         uniqueConstraints = @UniqueConstraint(columnNames = {"fdName"})
 )
-public class User extends AbstractEntity {
+public class BizUser extends AbstractEntity {
 
     @Column(length = 8,nullable = false)
     private String fdName;
@@ -34,10 +33,10 @@ public class User extends AbstractEntity {
     @JsonIgnore
     private String fdPassword;
 
-    @Column(length = 64,nullable = false)
+    @Column(length = 64)
     private String fdEmail;
 
     @Column(columnDefinition = "int(2)", nullable = false)
-    private RoleEnum fdRole;
+    private RoleEnum fdRole = RoleEnum.USER;
 
 }

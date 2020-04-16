@@ -43,7 +43,7 @@ public class SwaggerConfig {
 		pars.add(tokenPar.build());
 
 		return new Docket(DocumentationType.SWAGGER_2)
-				.groupName("后台")
+				.groupName("后台接口")
 				.apiInfo(apiInfo())
 				.select()
 				.apis(RequestHandlerSelectors.basePackage(CommonConstant.BASE_PACKAGE))

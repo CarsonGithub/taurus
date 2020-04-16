@@ -27,10 +27,6 @@ public abstract class AbstractEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long fdId;
 
-	@Length(max = 200)
-	@NotBlank
-	private String fdName;
-
 	/**
 	 * 1:启用 0:禁用
 	 */

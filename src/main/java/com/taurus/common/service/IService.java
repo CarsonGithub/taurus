@@ -1,9 +1,8 @@
 package com.taurus.common.service;
 
 import com.taurus.common.entity.AbstractEntity;
-import com.taurus.common.model.AbstractModel;
+import com.taurus.common.model.AbstractVO;
 import com.taurus.common.model.QueryModel;
-import com.taurus.common.model.AbstractUpdateModel;
 import org.springframework.data.domain.Page;
 
 /**
@@ -11,15 +10,15 @@ import org.springframework.data.domain.Page;
  *
  * @author 郑楷山
  **/
-public interface IService<T extends AbstractEntity,C extends AbstractModel,U extends AbstractUpdateModel> {
+public interface IService<T extends AbstractEntity,V extends AbstractVO> {
 
     T getById(Long id);
 
     Page<T> list(QueryModel queryModel);
 
-    T create(C createModel);
+    T create(V vo);
 
-    T update(U updateModel);
+    T update(V vo);
 
     void delete(Long id);
 

@@ -1,9 +1,8 @@
 package com.taurus.common.controller;
 
 import com.taurus.common.entity.AbstractEntity;
-import com.taurus.common.model.AbstractModel;
+import com.taurus.common.model.AbstractVO;
 import com.taurus.common.model.QueryModel;
-import com.taurus.common.model.AbstractUpdateModel;
 import com.taurus.common.service.IService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -23,7 +22,7 @@ import javax.validation.Valid;
 
 @Slf4j
 @Api
-public abstract class AbstractController<S extends IService<T, C, U>, T extends AbstractEntity, C extends AbstractModel, U extends AbstractUpdateModel> {
+public abstract class AbstractController<S extends IService<T, V>, T extends AbstractEntity, V extends AbstractVO> {
 
 	@Autowired
 	private S baseService;
@@ -40,20 +39,20 @@ public abstract class AbstractController<S extends IService<T, C, U>, T extends 
 
 	@ApiOperation("列表数据")
 	@GetMapping
-	public Page<T> list(@Valid QueryModel queryModel) {
+	public Page<T> list(@RequestBody @Valid QueryModel queryModel) {
 		return baseService.list(queryModel);
 	}
 
 	@ApiOperation("添加单记录")
 	@PostMapping
-	public void create(@Valid C createModel) {
-		baseService.create(createModel);
+	public void create(@RequestBody @Valid V vo) {
+		baseService.create(vo);
 	}
 
 	@ApiOperation("更新单记录")
 	@PutMapping
-	public void update(@Valid U updateModel) {
-		baseService.update(updateModel);
+	public void update(@RequestBody @Valid V vo) {
+		baseService.update(vo);
 	}
 
 	@ApiOperation("删除单记录")

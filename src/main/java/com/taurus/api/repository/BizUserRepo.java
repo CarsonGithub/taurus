@@ -1,6 +1,6 @@
 package com.taurus.api.repository;
 
-import com.taurus.api.entity.User;
+import com.taurus.api.entity.BizUser;
 import com.taurus.common.repository.IRepository;
 
 /**
@@ -9,6 +9,6 @@ import com.taurus.common.repository.IRepository;
  * @author 郑楷山
  **/
 
-public interface UserRepository  extends IRepository<User> {
+public interface BizUserRepo extends IRepository<BizUser> {
 
 }

@@ -1,7 +1,7 @@
 package com.taurus.common.service.impl;
 
-import com.taurus.api.entity.User;
-import com.taurus.api.service.IUserService;
+import com.taurus.api.entity.BizUser;
+import com.taurus.api.service.IBizUserService;
 import com.taurus.common.model.SysSecurityUser;
 import com.taurus.common.service.ISecurityUserService;
 import lombok.extern.slf4j.Slf4j;
@@ -16,17 +16,17 @@ import org.springframework.stereotype.Service;
 public class SecurityUserService implements ISecurityUserService {
 
 	@Autowired
-	private IUserService IUserService;
+	private IBizUserService ISysUserService;
 
 	@Override
     public SysSecurityUser getByUserName(String name) throws UsernameNotFoundException {
-        User user = IUserService.getByName(name);
-        if (user == null || null == user.getFdRole()) {
+        BizUser bizUser = ISysUserService.getByName(name);
+        if (bizUser == null || null == bizUser.getFdRole()) {
             throw new UsernameNotFoundException(String.format("用户: %s 不存在!", name));
         }
-        SysSecurityUser securityUserModel = new SysSecurityUser();
-        BeanUtils.copyProperties(user, securityUserModel);
-        return securityUserModel;
+        SysSecurityUser securityUserVO = new SysSecurityUser();
+        BeanUtils.copyProperties(bizUser, securityUserVO);
+        return securityUserVO;
     }
 
     @Override

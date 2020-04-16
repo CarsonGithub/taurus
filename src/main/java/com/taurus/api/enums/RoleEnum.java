@@ -20,7 +20,7 @@ public enum RoleEnum implements GrantedAuthority {
 
 	;
 
-	private int value;
+	private final int value;
 
 	@Override
 	public String getAuthority() {

@@ -1,6 +1,6 @@
 package com.taurus.common.model;
 
-import com.taurus.api.entity.User;
+import com.taurus.api.entity.BizUser;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.security.core.GrantedAuthority;
@@ -16,7 +16,7 @@ import java.util.Collections;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class SysSecurityUser extends User implements UserDetails {
+public class SysSecurityUser extends BizUser implements UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

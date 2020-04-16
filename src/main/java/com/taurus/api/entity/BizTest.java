@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -20,8 +21,10 @@ import javax.persistence.Table;
 @Data
 //@ToString(exclude = {"test"})
 //@EqualsAndHashCode(exclude = {"test"}, callSuper = true)
-@Table(name = "tb_test")
-public class Test extends AbstractEntity {
+@Table
+public class BizTest extends AbstractEntity {
 
+    @Column(length = 128,nullable = false)
+    private String fdName;
 
 }

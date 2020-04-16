@@ -1,7 +1,7 @@
 package com.taurus.api.model;
 
 import com.taurus.api.enums.RoleEnum;
-import com.taurus.common.model.AbstractModel;
+import com.taurus.common.model.AbstractVO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiParam;
 import lombok.Data;
@@ -21,7 +21,7 @@ import javax.validation.constraints.Size;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-public class UserCreateModel extends AbstractModel {
+public class BizUserVO extends AbstractVO {
 
     @NotBlank
     @Size(max = 8)

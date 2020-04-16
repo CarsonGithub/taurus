@@ -1,4 +1,4 @@
-package com.taurus.api.model;
+package com.taurus.common.model;
 
 
 import io.swagger.annotations.ApiModel;
@@ -16,7 +16,7 @@ import lombok.experimental.Accessors;
 @ApiModel(value = "文件上传: 数据模型")
 @Data
 @Accessors(chain = true)
-public class GlobalFileModel {
+public class GlobalFileVO {
 
     @ApiParam(value = "文件名")
     private String fdFileName;

@@ -20,7 +20,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebMvcConfig implements WebMvcConfigurer {
 
 	@Autowired
-	private IFileService IFileService;
+	private IFileService fileService;
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -29,7 +29,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 				.addResourceLocations("classpath:/static/");
 		registry
 				.addResourceHandler(CommonConstant.UPLOAD_FILE_PATH + "/**")
-				.addResourceLocations("file:" + IFileService.getFileRootPath()+"/");
+				.addResourceLocations("file:" + fileService.getFileRootPath()+"/");
 	}
 
 	@Bean

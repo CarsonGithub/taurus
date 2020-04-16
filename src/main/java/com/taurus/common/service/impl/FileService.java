@@ -90,25 +90,24 @@ public class FileService implements IFileService {
             }
         };
         checkFile.accept(multipartFile);
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("YYYYMM");
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMM");
         String currentMonth = dateTimeFormatter.format(LocalDate.now());
-        String fileNameFormat = new StringBuilder("%s")
-                .append(currentMonth)
-                .append("-%s.%s")
-                .toString();
-        String urlFormat = new StringBuilder(CommonConstant.UPLOAD_FILE_PATH + fileTypeEnum.getPath())
-                .append(currentMonth)
-                .append("-%s.%s")
-                .toString();
+        String fileNameFormat = "%s" +
+                currentMonth +
+                "-%s.%s";
+        String urlFormat = CommonConstant.UPLOAD_FILE_PATH +
+                fileTypeEnum.getPath() +
+                currentMonth +
+                "-%s.%s";
         Function<MultipartFile, String> saveFile = (MultipartFile file) -> {
             String[] fileNameSplit = Objects.requireNonNull(file.getOriginalFilename()).split(Pattern.quote("."));
             String saveFileName = UUID.randomUUID().toString();
             String suffix = fileNameSplit[fileNameSplit.length - 1];
             File diskFile = new File(String.format(fileNameFormat, getFileRootPath() + fileTypeEnum.getPath(), saveFileName, suffix));
-            if (!diskFile.exists()) {
-                diskFile.mkdirs();
-            }
             try {
+                if (!diskFile.exists()&&!diskFile.mkdirs()) {
+                    throw new IOException();
+                }
                 file.transferTo(diskFile);
             } catch (IOException e) {
                 throw new BusinessException(ExceptionEnum.SERVER_ERROR, e);
@@ -121,7 +120,7 @@ public class FileService implements IFileService {
     /**
      * 文件移除
      *
-     * @param fileURI
+     * @param [fileURI]
      * @return boolean
      **/
     @Override
@@ -129,17 +128,18 @@ public class FileService implements IFileService {
         if (StringUtils.isBlank(fileURI)) {
             return false;
         }
-        try {
-            fileURI = getFileRootPath() + fileURI.substring(CommonConstant.UPLOAD_FILE_PATH.length());
-            File file = new File(fileURI);
-            if (file.exists()) {
-                file.delete();
+        boolean result = false;
+        fileURI = getFileRootPath() + fileURI.substring(CommonConstant.UPLOAD_FILE_PATH.length());
+        File file = new File(fileURI);
+        if (file.exists()) {
+            result = file.delete();
+            if (result) {
                 log.info("已移除文件:" + fileURI);
+            }else {
+                throw new BusinessException(ExceptionEnum.FILE_FOUND_ERROR);
             }
-        } catch (Exception e) {
-            throw new BusinessException(ExceptionEnum.FILE_FOUND_ERROR);
         }
-        return true;
+        return result;
     }
 
 }

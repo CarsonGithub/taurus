@@ -1,6 +1,6 @@
 package com.taurus.api.repository;
 
-import com.taurus.api.entity.Test;
+import com.taurus.api.entity.BizTest;
 import com.taurus.common.repository.IRepository;
 
 /**
@@ -9,6 +9,6 @@ import com.taurus.common.repository.IRepository;
  * @author 郑楷山
  **/
 
-public interface TestRepository extends IRepository<Test> {
+public interface BizTestRepo extends IRepository<BizTest> {
 
 }

@@ -65,11 +65,10 @@ public class SmsService implements ISmsService {
             if (HttpStatus.OK == responseEntity.getStatusCode()) {
                 log.info("手机号码({})获取验证码:{},成功!", phoneNumber, code);
                 opr.set(code + "," + new Date().getTime(), 5, TimeUnit.MINUTES);
-                return responseEntity.getBody();
             } else {
                 log.info("手机号码({})获取验证码:{},失败!", phoneNumber, code);
-                return responseEntity.getBody();
             }
+            return responseEntity.getBody();
         } catch (Exception e) {
             throw new BusinessException(ExceptionEnum.SMS_OPERATE_ERROR);
         }

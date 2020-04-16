@@ -70,7 +70,7 @@ public interface IRepository<T extends AbstractEntity> extends JpaRepositoryImpl
 
     default String[] getSearchField(Class clazz) {
         Constructor[] cons = clazz.getDeclaredConstructors();
-        int len = 0;
+        int len;
         String[] searchField = new String[0];
         for (Constructor con : cons) {
             Parameter[] parameters = con.getParameters();

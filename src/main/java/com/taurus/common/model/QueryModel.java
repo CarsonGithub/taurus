@@ -8,6 +8,7 @@ import lombok.experimental.Accessors;
 import org.springframework.data.domain.Sort;
 
 import java.util.EnumMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -19,13 +20,16 @@ import java.util.Map;
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @Data
-public class QueryModel extends AbstractModel {
+public class QueryModel extends AbstractVO {
 
     @ApiParam(value = "当前页面", example = "1")
     private int offset = 1;
 
     @ApiParam(value = "页面大小", example = "10")
     private int pageSize = 10;
+
+    @ApiParam(value = "检索字段")
+    private List<String> columns;
 
     @ApiParam(value = "排序字段")
     private EnumMap<Sort.Direction,String> sorts;

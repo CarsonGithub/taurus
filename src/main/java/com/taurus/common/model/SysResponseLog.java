@@ -13,7 +13,6 @@ import lombok.experimental.Accessors;
 @Data
 public class SysResponseLog {
 
-
 	/**
 	 * 处理花费时间
 	 */

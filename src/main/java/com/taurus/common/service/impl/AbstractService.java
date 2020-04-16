@@ -25,12 +25,12 @@ import java.util.Date;
  *
  * @author 郑楷山
  **/
-public abstract class AbstractService<T extends AbstractEntity, C extends AbstractModel, U extends AbstractUpdateModel> implements IService<T, C, U> {
+public abstract class AbstractService<T extends AbstractEntity, V extends AbstractVO> implements IService<T, V> {
 
     @Autowired
     protected IRepository<T> iRepository;
     @Autowired
-    private IFileService IFileService;
+    private IFileService fileService;
     @PersistenceContext
     private EntityManager em;
 
@@ -53,11 +53,11 @@ public abstract class AbstractService<T extends AbstractEntity, C extends Abstra
     @SneakyThrows
     @Override
     @Transactional
-    public T create(C createModel) {
+    public T create(V vo) {
         T entity;
         try {
             entity = entityClass.newInstance();
-            BeanUtil.copyProperties(createModel, entity);
+            BeanUtil.copyProperties(vo, entity);
             Date date = new Date();
             SysSecurityUser user = UserContextHelper.getUser();
             entity.setFdCreateBy(user == null ? "" : user.getUsername());
@@ -74,9 +74,9 @@ public abstract class AbstractService<T extends AbstractEntity, C extends Abstra
 
     @Override
     @Transactional
-    public T update(U updateModel) {
-        T entity = getById(updateModel.getFdId());
-        BeanUtil.copyProperties(updateModel, entity);
+    public T update(V vo) {
+        T entity = getById(vo.getFdId());
+        BeanUtil.copyProperties(vo, entity);
         SysSecurityUser user = UserContextHelper.getUser();
         entity.setFdUpdateBy(user == null ? "" : user.getUsername());
         entity.setFdUpdateTime(new Date());
@@ -117,7 +117,7 @@ public abstract class AbstractService<T extends AbstractEntity, C extends Abstra
                     if (newEntity != null && filePath.equals(field.get(newEntity))) {
                         return;
                     }
-                    IFileService.fileRemove((String) field.get(entity));
+                    fileService.fileRemove((String) field.get(entity));
                 }
             } catch (IllegalAccessException ignored) {
             }

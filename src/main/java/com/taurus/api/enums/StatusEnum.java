@@ -19,6 +19,6 @@ public enum StatusEnum {
 
 	;
 
-	private int value;
+	private final int value;
 
 }

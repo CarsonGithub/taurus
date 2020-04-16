@@ -1,8 +1,7 @@
 package com.taurus.api.controller;
 
-import com.taurus.api.entity.Test;
-import com.taurus.api.model.TestCreateModel;
-import com.taurus.api.model.TestUpdateModel;
+import com.taurus.api.entity.BizTest;
+import com.taurus.api.model.BizTestVO;
 import com.taurus.common.controller.AbstractController;
 import com.taurus.common.service.IService;
 import io.swagger.annotations.Api;
@@ -20,8 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(tags = "Backend: 测试")
 @RestController
 @RequestMapping("/test")
-public class TestController extends
-        AbstractController<IService<Test, TestCreateModel, TestUpdateModel>
-                        , Test, TestCreateModel, TestUpdateModel> {
+public class TestController extends AbstractController<IService<BizTest, BizTestVO>, BizTest, BizTestVO> {
 
 }

@@ -23,6 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -48,10 +49,11 @@ public class RequestLogAspect {
 	@Before("servicePointcut()")
 	public void before(JoinPoint joinPoint) {
 		try {
-			HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+			HttpServletRequest request = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest();
 			HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getResponse();
 			String uri = request.getRequestURI();
 			String requestId = UUID.randomUUID().toString();
+			assert response != null;
 			response.setHeader("X-Request-ID", requestId);
 			String ipAddress = StringUtils.isBlank(request.getHeader(CommonConstant.X_REAL_IP)) ? request.getRemoteAddr() : request.getHeader(CommonConstant.X_REAL_IP);
 			ipAddress = StringUtils.isBlank(request.getHeader(CommonConstant.X_FORWARDED_FOR)) ? ipAddress : request.getHeader(CommonConstant.X_FORWARDED_FOR).split(",")[0];
@@ -127,7 +129,6 @@ public class RequestLogAspect {
 			requestLogThreadLocal.remove();
 			log.error(CommonConstant.LOG_THROWING_AFTER_THROWING, t);
 		}
-
 	}
 
 }

@@ -5,7 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.taurus.common.constant.CommonConstant;
 import com.taurus.common.enums.ExceptionEnum;
 import com.taurus.common.model.SysExceptionJson;
-import com.taurus.common.model.SysUserLogin;
+import com.taurus.common.model.SysSecurityUser;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.MediaType;
@@ -28,13 +28,13 @@ import java.util.Map;
 @Slf4j
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-	private String jwtISS;
+	private final String jwtISS;
 
-	private String jwtSecret;
+	private final String jwtSecret;
 
-	private Long jwtTokenExpireTime;
+	private final Long jwtTokenExpireTime;
 
-	private AuthenticationManager authenticationManager;
+	private final AuthenticationManager authenticationManager;
 
 	JWTAuthenticationFilter(AuthenticationManager authenticationManager,
 							String jwtISS,
@@ -50,7 +50,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	public Authentication attemptAuthentication(HttpServletRequest req,
 	                                            HttpServletResponse res) throws AuthenticationException {
 		try {
-			UserDetails creds = JSONObject.parseObject(req.getInputStream(), SysUserLogin.class);
+			UserDetails creds = JSONObject.parseObject(req.getInputStream(), SysSecurityUser.class);
 			if (null == creds) {
 				throw new BadCredentialsException(ExceptionEnum.PARAMETER_ERROR.getDescription());
 			}

@@ -24,7 +24,6 @@ public class BusinessException extends RuntimeException {
 
 	private Object[] args;
 
-	// 反序列化用
 	public BusinessException() {
 	}
 

@@ -16,12 +16,12 @@ import lombok.Getter;
 public enum FileTypeEnum {
 
     // 首页轮播图片
-    IMAGE_HOME_PAGE_BANNER("","image",CommonConstant.MAX_IMAGE_SIZE,CommonConstant.HOME_PAGE_BANNER_PATH),
+    IMAGE_HOME_PAGE_BANNER("","image",CommonConstant.MAX_IMAGE_SIZE,"/image/banner/homepage/"),
 
             ;
 
-    private String name;
-    private String type; 
-    private Long size;
-    private String path;
+    private final String name;
+    private final String type;
+    private final Long size;
+    private final String path;
 }
