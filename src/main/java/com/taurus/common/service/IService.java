@@ -20,8 +20,6 @@ public interface IService<T extends AbstractEntity,V extends AbstractVO> {
 
     T update(V vo);
 
-    void delete(Long id);
-
     void deleteAll(String ids);
 
 }

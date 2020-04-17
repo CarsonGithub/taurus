@@ -85,7 +85,6 @@ public abstract class AbstractService<T extends AbstractEntity, V extends Abstra
         return newEntity;
     }
 
-    @Override
     @Transactional
     public void delete(Long id) {
         iRepository.delete(getById(id));

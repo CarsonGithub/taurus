@@ -38,7 +38,7 @@ public class BizUserService extends AbstractService<BizUser, BizUserVO> implemen
 	@Override
 	@Transactional
 	public BizUser create(BizUserVO bizUserVO) {
-		bizUserVO.setPassword(passwordEncoder.encode(bizUserVO.getPassword()));
+		bizUserVO.setFdPassword(passwordEncoder.encode(bizUserVO.getFdPassword()));
 		return super.create(bizUserVO);
 	}
 

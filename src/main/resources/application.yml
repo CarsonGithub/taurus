@@ -23,7 +23,7 @@ spring:
   jackson:
     serialization:
       write-dates-as-timestamps: false
-    date-format: yyyy-MM-dd HH:mm:ss
+    date-format: yyyy-MM-dd hh:MM:ss
     time-zone: GMT+8
   # servlet
   servlet:

@@ -26,17 +26,17 @@ public class BizUserVO extends AbstractVO {
     @NotBlank
     @Size(max = 8)
     @ApiParam(value = "用户名", example = "admin", required = true)
-    private String name;
+    private String fdName;
 
     @Size(max = 16,min = 6)
     @ApiParam(value = "密码",example = "123456" , required = true)
-    private String password;
+    private String fdPassword;
 
     @Size(max = 64)
     @ApiParam(value = "邮箱",example = "test@taurus.com.cn" , required = true)
-    private String email;
+    private String fdEmail;
 
     @ApiParam(value = "角色",example = "USER" )
-    private RoleEnum role;
+    private RoleEnum fdRole;
 
 }

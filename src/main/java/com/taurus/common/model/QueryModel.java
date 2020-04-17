@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import org.springframework.data.domain.Sort;
 
+import java.io.Serializable;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
@@ -17,10 +18,11 @@ import java.util.Map;
  * @author 郑楷山
  **/
 
-@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @Data
-public class QueryModel extends AbstractVO {
+public class QueryModel implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @ApiParam(value = "当前页面", example = "1")
     private int offset = 1;

@@ -37,34 +37,29 @@ public abstract class AbstractController<S extends IService<T, V>, T extends Abs
 		return baseService.getById(id);
 	}
 
-	@ApiOperation("列表数据")
-	@GetMapping
-	public Page<T> list(@RequestBody @Valid QueryModel queryModel) {
+	@ApiOperation("获取列表数据")
+	@PostMapping
+	public Page<T> list(@Valid QueryModel queryModel) {
 		return baseService.list(queryModel);
 	}
 
-	@ApiOperation("添加单记录")
+	@ApiOperation("添加单记录,不要传ID")
 	@PostMapping
 	public void create(@RequestBody @Valid V vo) {
 		baseService.create(vo);
 	}
 
-	@ApiOperation("更新单记录")
+	@ApiOperation("更新单记录,需要传ID")
 	@PutMapping
 	public void update(@RequestBody @Valid V vo) {
 		baseService.update(vo);
 	}
 
-	@ApiOperation("删除单记录")
-	@DeleteMapping("/{id}")
-	public void delete(@PathVariable @ApiParam(value = "id", example = "1", required = true) Long id) {
-		baseService.delete(id);
-	}
-
-	@ApiOperation("删除多条记录")
-	@DeleteMapping
-	public void deleteByIds(@RequestParam @ApiParam(value = "ids", example = "1,2" ,required = true) String ids){
+	@ApiOperation("删除记录,可多删除")
+	@DeleteMapping("/{ids}")
+	public void delete(@PathVariable @ApiParam(value = "id", example = "1,2", required = true) String ids) {
 		baseService.deleteAll(ids);
 	}
+
 }
 
