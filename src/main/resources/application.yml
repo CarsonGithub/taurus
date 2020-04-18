@@ -51,8 +51,8 @@ logging:
     root: info
     com.taurus.www: debug
   file:
-    name: logs/taurus.log
-    path: logs/taurus
+    name: logs/all.log
+    path: logs/
 # actuator
 #management:
 #  endpoint:

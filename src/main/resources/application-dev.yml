@@ -22,8 +22,8 @@ server:
   port: 8083
 
 # 文件上传路径
-taurus:
-  file-root-path: ./taurus
+file:
+  root-path: ./taurus
 # jwt开关
 jwt:
   enable: false

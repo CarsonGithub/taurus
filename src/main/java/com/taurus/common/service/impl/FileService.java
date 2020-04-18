@@ -31,7 +31,7 @@ import java.util.regex.Pattern;
 @Slf4j
 public class FileService implements IFileService {
 
-    @Value("${taurus.file-root-path}")
+    @Value("${file:root-path}")
     private String fileRootPath;
 
     /**
@@ -120,7 +120,6 @@ public class FileService implements IFileService {
     /**
      * 文件移除
      *
-     * @param [fileURI]
      * @return boolean
      **/
     @Override
