@@ -24,7 +24,7 @@ import static com.taurus.common.constant.CommonConstant.LINE_SEPARATOR;
 
 @Slf4j
 @RestControllerAdvice
-public class ControllerExceptionHandlerAdvice {
+public class ExceptionHandlerAdvice {
 
     @ExceptionHandler(Exception.class)
     public JSONObject handleException(Exception exception,
@@ -44,7 +44,7 @@ public class ControllerExceptionHandlerAdvice {
         }
         if (exception instanceof BusinessException) {
             businessException = (BusinessException) exception;
-            logException(businessException, exception,CommonConstant.CUSTOM_EXCEPTION);
+            logException(businessException, exception,CommonConstant.BUSINESS_EXCEPTION);
         } else {
             businessException = new BusinessException(ExceptionEnum.SERVER_ERROR, exception.getMessage());
             logException(businessException, exception,CommonConstant.SYSTEM_EXCEPTION);

@@ -68,12 +68,12 @@ public class BusinessException extends RuntimeException {
 	 */
 	public BusinessException(ExceptionEnum exceptionEnum, Throwable cause, Object... args) {
 
-		super(String.format(exceptionEnum.getDescription(), args),
+		super(String.format(exceptionEnum.getMessage(), args),
 				cause,
 				true,
 				false);
 		this.exceptionEnum = exceptionEnum;
-		this.message = String.format(exceptionEnum.getDescription(), args);
+		this.message = String.format(exceptionEnum.getMessage(), args);
 		this.status = exceptionEnum.getStatus();
 		this.error = exceptionEnum.getError();
 		this.args = args;

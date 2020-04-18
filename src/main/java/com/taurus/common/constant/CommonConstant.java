@@ -63,15 +63,15 @@ public class CommonConstant {
 	public static final Set<String> VIDEO_SUFFIX_SET = new HashSet<>(Arrays.asList("mp4", "flv","avi","3gp","rm","rmvb","wmv","mov"));
 	public static final Set<String> DOC_SUFFIX_SET = new HashSet<>(Arrays.asList("doc", "docx", "pdf","txt","html"));
 
-	public final static  Long MAX_IMAGE_SIZE = 5242880L;
-	public final static  Long MAX_VIDEO_SIZE = 52428800L; //50M
-	public final static  Long MAX_DOC_SIZE = 5242880L;
+	public final static  Long MAX_IMAGE_SIZE = 5 * 1024 * 1024L;
+	public final static Long MAX_VIDEO_SIZE = 50 * 1024 * 1024L;
+	public final static  Long MAX_DOC_SIZE = 5 * 1024 * 1024L;
 
 	/**
 	 *  异常类型
 	 */
 	public static final String SYSTEM_EXCEPTION = "系统异常";
-	public static final String CUSTOM_EXCEPTION = "业务异常";
+	public static final String BUSINESS_EXCEPTION = "业务异常";
 
 	/**
 	 * token
@@ -103,18 +103,9 @@ public class CommonConstant {
 	public static final String LOG_JWT_AUTHENTICATION_SUCCESS = LINE_SEPARATOR + "JWT鉴权成功 :";
 
 	/**
-	 * 默认搜索和排序字段
-	 */
-	public static final String SEARCH_NAME = "name";
-
-	/**
 	 * redis相关
 	 */
 	public final static String REDIS_GLOBAL = "global:";
 	public final static String REDIS_UPDATE_COUNT = REDIS_GLOBAL + "update-count";
-
-	public final static String REDIS_DEFAULT_VALUE = "0";
-
-	public final static String REDIS_DEFAULT_CACHE_NAMESPACE ="cache:";
 
 }

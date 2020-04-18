@@ -52,10 +52,10 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		try {
 			UserDetails creds = JSONObject.parseObject(req.getInputStream(), SysSecurityUser.class);
 			if (null == creds) {
-				throw new BadCredentialsException(ExceptionEnum.PARAMETER_ERROR.getDescription());
+				throw new BadCredentialsException(ExceptionEnum.PARAMETER_ERROR.getMessage());
 			}
 			if (StringUtils.isBlank(creds.getUsername()) || StringUtils.isBlank(creds.getPassword())) {
-				throw new BadCredentialsException(ExceptionEnum.USER_PASSWORD_ERROR.getDescription());
+				throw new BadCredentialsException(ExceptionEnum.USER_PASSWORD_ERROR.getMessage());
 			}
 			return authenticationManager.authenticate(
 					new UsernamePasswordAuthenticationToken(

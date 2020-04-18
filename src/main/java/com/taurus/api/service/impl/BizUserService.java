@@ -27,7 +27,7 @@ public class BizUserService extends AbstractService<BizUser, BizUserVO> implemen
 	@Override
 	public BizUser getByName(String name) {
 		SpecificationFactory<BizUser> factory = new SpecificationFactory<>();
-		factory.append(CommonConstant.SEARCH_NAME, ConditionEnum.EQUAL,name);
+		factory.append("fdName", ConditionEnum.EQUAL,name);
 		BizUser bizUser = iRepository.findOne(factory.build()).orElse(null);
 		if (null == bizUser) {
 			throw new BusinessException(ExceptionEnum.NO_EXIST_ERROR);

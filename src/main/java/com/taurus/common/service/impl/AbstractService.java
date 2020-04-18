@@ -1,6 +1,5 @@
 package com.taurus.common.service.impl;
 
-import com.taurus.api.enums.StatusEnum;
 import com.taurus.common.config.security.UserContextHelper;
 import com.taurus.common.entity.AbstractEntity;
 import com.taurus.common.enums.ExceptionEnum;
@@ -64,7 +63,8 @@ public abstract class AbstractService<T extends AbstractEntity, V extends Abstra
             entity.setFdCreateTime(date);
             entity.setFdUpdateBy(user == null ? "" : user.getUsername());
             entity.setFdUpdateTime(date);
-            entity.setFdStatus(StatusEnum.ENABLE);
+            entity.setFdEnabled(Boolean.TRUE);
+            entity.setFdDeleted(Boolean.FALSE);
             entity = iRepository.save(entity);
         } catch (InstantiationException | IllegalAccessException e) {
             throw new BusinessException(ExceptionEnum.CLASS_NOT_FOUND_ERROR);

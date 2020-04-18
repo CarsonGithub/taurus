@@ -38,7 +38,7 @@ public abstract class AbstractController<S extends IService<T, V>, T extends Abs
 	}
 
 	@ApiOperation("获取列表数据")
-	@PostMapping
+	@GetMapping
 	public Page<T> list(@Valid QueryModel queryModel) {
 		return baseService.list(queryModel);
 	}

@@ -17,8 +17,6 @@ public enum  ExceptionEnum {
 
 	CLASS_NOT_FOUND_ERROR(500, 52, "初始化找不到类!"),
 
-	STATIC_HTML_ERROR(500, 53, "生成静态页时出错!"),
-
 	INIT_ENTITY_ERROR(500, 54, "设置实体初始值出错!"),
 
 	CACHE_ERROR(500, 55, "缓存过程出错!"),
@@ -31,11 +29,11 @@ public enum  ExceptionEnum {
 
 	DEMO_POST_ERROR(500, 59, "数据传输到Demo系统失败!"),
 
-	NO_PERMISSION_ACCESS(403, 41, "No permission!"),
+	NO_PERMISSION_ACCESS(403, 41, "无权限访问!"),
 
-	TOKEN_ERROR(401, 42, "JWT auth  failed!"),
+	TOKEN_ERROR(401, 42, "JWT 验证失败!"),
 
-	PARAMETER_ERROR(400, 43, "Error params:%s"),
+	PARAMETER_ERROR(400, 43, "参数错误:%s"),
 
 	SQL_SENSITIVE_CHARACTER(400,44,"包含SQL非法字符"),
 
@@ -61,11 +59,7 @@ public enum  ExceptionEnum {
 
 	DELETE_CATE_USING_ERROR(400,11,"该分类在使用中，或者该分类下有数据不能删除!"),
 
-	CLEAR_CACHE_ERROR(400,12,"无数据变更,无需清空缓存!"),
-
 	EXPORT_ERROR(400,12,"导出失败,IO过程出现问题!"),
-
-	SEO_DELETE_REFUSE_ERROR(400,12,"SEO资讯不可删除!"),
 
 	SMS_REPEAT_ERROR(400, 13, "同个手机号短时间不能重复请求!"),
 
@@ -79,7 +73,7 @@ public enum  ExceptionEnum {
 
 	private final int error;
 
-	private final String description;
+	private final String message;
 
 
 }

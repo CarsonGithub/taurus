@@ -4,11 +4,10 @@ import io.swagger.annotations.ApiParam;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
-import javax.validation.constraints.Positive;
 import java.io.Serializable;
 
 /**
- * 通用model
+ * 通用VO: Id自增
  *
  * @author 郑楷山
  **/
@@ -17,7 +16,7 @@ import java.io.Serializable;
 @Data
 public abstract class AbstractVO implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Positive
-    @ApiParam(value = "ID"  , required = true)
+
+    @ApiParam(value = "ID" )
     private Long fdId;
 }

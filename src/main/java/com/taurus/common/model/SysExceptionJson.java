@@ -16,7 +16,7 @@ public class SysExceptionJson extends JSONObject {
         this.put(CommonConstant.STATUS_CODE,exceptionEnum.getStatus()) ;
         this.put(CommonConstant.ERROR_CODE,exceptionEnum.getError()) ;
         this.put(CommonConstant.TIMESTAMP,System.currentTimeMillis()) ;
-        this.put(CommonConstant.MESSAGE,exceptionEnum.getDescription()) ;
+        this.put(CommonConstant.MESSAGE,exceptionEnum.getMessage()) ;
     }
 
     public SysExceptionJson(BusinessException businessException) {

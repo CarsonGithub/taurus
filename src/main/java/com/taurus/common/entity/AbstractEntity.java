@@ -1,14 +1,11 @@
 package com.taurus.common.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.taurus.api.enums.StatusEnum;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
 /**
@@ -31,22 +28,28 @@ public abstract class AbstractEntity {
 	 * 1:启用 0:禁用
 	 */
 	@Column(columnDefinition = "int(2)", nullable = false)
-	@JsonIgnore
-	private StatusEnum fdStatus;
+	private Boolean fdEnabled;
 
-	@Column(length = 256)
+	/**
+	 * 是否已删除
+	 */
+	@Column(columnDefinition = "int(2)", nullable = false)
+	@JsonIgnore
+	private Boolean fdDeleted;
+
+	@Column
 	private String fdRemark;
 
-	@Column(name = "create_by", length = 8)
+	@Column
 	private String fdCreateBy;
 
-	@Column(name = "create_time")
+	@Column
 	private Date fdCreateTime;
 
-	@Column(name = "update_by", length = 8)
+	@Column
 	private String fdUpdateBy;
 
-	@Column(name = "update_time")
+	@Column
 	private Date fdUpdateTime;
 
 }
