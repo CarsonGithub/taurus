@@ -1,7 +1,7 @@
 spring:
   # DB源
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/taurus?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=CTT&zeroDateTimeBehavior=convertToNull&useSSL=false
+    url: jdbc:mysql://localhost:3306/taurus?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=CTT&&useSSL=false
     username: root
     password: root
   # jpa
@@ -11,25 +11,27 @@ spring:
       ddl-auto: 'update'
     properties:
       hibernate:
-        format_sql: true
+        format_sql: false
   ## redis配置
   redis:
     host: localhost
     port: 6379
+  # password: taurus
     database: 0
 # 端口
 server:
-  port: 80
+  port: 8080
 
 # 文件上传路径
 taurus:
-  file-root-path: ./taurus
+  file-root-path: /home/taurus/static
 # jwt开关
 jwt:
-  enable: false
-# swagger开关
-swagger:
   enable: true
+# swagger开关
+springfox:
+  documentation:
+    enabled: true
 # jpa日志
 logging:
   level:
